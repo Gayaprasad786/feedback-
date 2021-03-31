@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    <nav>
+         Feedback ! 
+       
+    </nav>
+</header>
+
+<body>
+    <main>
+        <section class="box1">
+            <form id="form">
+                <h2>Fill all details</h2><br>
+
+                <p> <label for="name">First Name <span class="req">*</span>:</label>
+                    <input type="text" name="fname" id="name" placeholder="Enter your name" required>
+                </p>
+                <p> <label for="middle">Middle Name:</label>
+                    <input type="text" name="mname" id="middle" placeholder="Enter your middle name">
+                </p>
+                <p> <label for="last">Last Name <span class="req">*</span>:</label>
+                    <input type="text" name="lname" id="last" placeholder="Enter your last name" required>
+                </p>
+                <p>
+
+                    Gender <span class="req">*</span>: Male <input type="radio" name="gender" id="ml" required> Female
+                    <input type="radio" name="gender" id="fl" required>
+                </p>
+                <p> <label for="feedback">Suggestion <span class="req">*</span>:</label>
+                    <textarea name="feedback" id="feedback" cols="25" rows="5" required></textarea>
+                </p>
+                <p>
+                    <input type="submit" onclick='show()' value="+" class="butten">
+                    <input type="reset" value="-" class="butten">
+                </p>
+
+            </form>
+        </section>
+        <section class="box2">
+            <div id="display">
+                <div style="text-align: center;"><strong>Your Thoughts is Matter</strong></div>
+                <hr>
+
+            </div>
+        </section>
+    </main>
+    <br>
+</body>
+<footer>
+    <script>
+        function clear() {
+            document.getElementById("form").reset();
+        }
+        function show() {
+            var suggest = document.getElementById("feedback").value;
+            var fname = document.getElementById("name").value;
+            var lname = document.getElementById("last").value;
+            var mname = document.getElementById("middle").value;
+            var gen1 = document.getElementById("ml");
+            var gen2 = document.getElementById("fl");
+
+            if (suggest == "" || fname == "" || lname == "")
+                alert("Please Fill all the details");
+            else {
+                var para = document.createElement("P");
+                para.innerHTML = suggest;
+                var user = document.createElement("h4");
+                if (gen1.checked == true) {
+                    if (mname == "")
+                        user.innerHTML ='--' + 'Mr.' + fname + ' ' + lname + '--';
+                    else
+                        user.innerHTML ='--' + 'Mr.' + fname + ' ' + mname + ' ' + lname + '--';
+
+                }
+                else {
+                    if (mname == "")
+                        user.innerHTML ='--' + 'Ms/Mrs.' + fname + ' ' + lname + '--';
+                    else
+                        user.innerHTML ='--'+ 'Ms/Mrs.' + fname + ' ' + mname + ' ' + lname + '--';
+
+                }
+                para.style.padding = "5px";
+                user.style.textAlign = "center";
+                document.getElementById("display").appendChild(para);
+                document.getElementById("display").appendChild(user);
+                user.style.padding = "0px 0px 30px 0px";
+                clear();
+            }
+        }
+
+    </script>
+    <p> Copyright &copy; 2021 All rights are reserved </p>
+    <p> Developed & design by: Shivam Tiwari</p>
+
+</footer>
+
+</html>
